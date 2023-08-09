@@ -47,18 +47,8 @@ const CheckoutForm = () => {
   return (
     <Form method='POST' className='flex flex-col gap-y-4'>
       <h4 className='font-medium text-xl'>Shipping Information</h4>
-      <FormInput
-        defaultValue='traversy media'
-        label='first name'
-        name='name'
-        type='text'
-      />
-      <FormInput
-        defaultValue='europe'
-        label='address'
-        name='address'
-        type='text'
-      />
+      <FormInput label='first name' name='name' type='text' />
+      <FormInput label='address' name='address' type='text' />
       <div className='mt-4'>
         <SubmitBtn text='Place Your Order' />
       </div>
