@@ -1,6 +1,7 @@
-import { redirect } from 'react-router-dom';
+import { redirect, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { customFetch } from '../utils';
+import { OrdersList, SectionTitle } from '../components';
 
 export const loader = (store) => async () => {
   const user = store.getState().userState.user;
@@ -15,10 +16,19 @@ export const loader = (store) => async () => {
       Authorization: `Bearer ${user.token}`,
     },
   });
-  console.log(response);
-  return null;
+
+  return { orders: response.data.data };
 };
 const Orders = () => {
-  return <h1 className='text-7xl'>Orders</h1>;
+  const { orders } = useLoaderData();
+  if (orders.length < 1) {
+    return <SectionTitle text='Please make an order' />;
+  }
+  return (
+    <>
+      <SectionTitle text='Your Orders' />
+      <OrdersList />
+    </>
+  );
 };
 export default Orders;

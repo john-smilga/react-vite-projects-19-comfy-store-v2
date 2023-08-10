@@ -11,14 +11,15 @@ export const action =
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
     const user = store.getState().userState.user;
-    const { cartItems, cartTotal } = store.getState().cartState;
+    const { cartItems, cartTotal, numItemsInCart } = store.getState().cartState;
 
     const info = {
       name,
       address,
       chargeTotal: cartTotal,
       orderTotal: formatPrice(cartTotal),
-      products: cartItems,
+      cartItems,
+      numItemsInCart,
     };
     try {
       const response = await customFetch.post(
