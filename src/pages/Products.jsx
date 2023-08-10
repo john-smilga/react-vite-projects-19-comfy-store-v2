@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { Filters, ProductsContainer } from '../components';
+import { Filters, PaginationContainer, ProductsContainer } from '../components';
 import { customFetch } from '../utils';
 
 const url = '/products';
@@ -21,6 +21,7 @@ const Products = () => {
     <>
       <Filters />
       <ProductsContainer />
+      <PaginationContainer />
     </>
   );
 };

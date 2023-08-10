@@ -11,13 +11,14 @@ export const action =
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
     const user = store.getState().userState.user;
-    const { cartItems, cartTotal, numItemsInCart } = store.getState().cartState;
+    const { cartItems, orderTotal, numItemsInCart } =
+      store.getState().cartState;
 
     const info = {
       name,
       address,
-      chargeTotal: cartTotal,
-      orderTotal: formatPrice(cartTotal),
+      chargeTotal: orderTotal,
+      orderTotal: formatPrice(orderTotal),
       cartItems,
       numItemsInCart,
     };
@@ -33,7 +34,7 @@ export const action =
       );
       store.dispatch(clearCart());
       toast.success('order placed successfully');
-      return redirect('/');
+      return redirect('/orders');
     } catch (error) {
       console.log(error);
       const errorMessage =

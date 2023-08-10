@@ -31,7 +31,7 @@ const Header = ({ totalProducts, setLayout, layout }) => {
 
   return (
     <div className='flex justify-between items-center mt-8 border-b border-base-300 pb-5'>
-      <h4 className='font-bold text-lg'>
+      <h4 className='font-medium text-md'>
         {totalProducts} product{totalProducts > 1 && 's'}
       </h4>
       <div className='flex gap-x-2'>
