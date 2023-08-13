@@ -15,14 +15,14 @@ const CartItem = ({ cartItem }) => {
   return (
     <article
       key={cartID}
-      className='mb-12 flex  flex-wrap border-b border-base-300 pb-6 last:border-b-0'
+      className='mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0'
     >
       <img
         src={image}
         alt={title}
         className='h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover '
       />
-      <div className='ml-8 sm:ml-16'>
+      <div className=' sm:ml-16'>
         <h3 className='capitalize font-medium '>{title}</h3>
         <h4 className='capitalize text-sm text-neutral-content'>{company}</h4>
 
@@ -36,7 +36,7 @@ const CartItem = ({ cartItem }) => {
           ></span>
         </p>
       </div>
-      <div className='ml-8 sm:ml-24'>
+      <div className='sm:ml-24'>
         {/* AMOUNT */}
         <div className='form-control w-full '>
           <label className='label p-0'>
@@ -63,7 +63,7 @@ const CartItem = ({ cartItem }) => {
         </button>
       </div>
 
-      <p className='font-medium ml-auto'>{formatPrice(price)}</p>
+      <p className='font-medium sm:ml-auto'>{formatPrice(price)}</p>
     </article>
   );
 };
