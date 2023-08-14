@@ -10,7 +10,7 @@ const HomeLayout = () => {
       {isPageLoading ? (
         <Loading />
       ) : (
-        <section className='mx-auto px-8 py-20 max-w-6xl'>
+        <section className='align-element py-20'>
           <Outlet />
         </section>
       )}
