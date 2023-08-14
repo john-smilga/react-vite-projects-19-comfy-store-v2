@@ -25,7 +25,7 @@ const OrdersList = () => {
               const id = order.id;
               const { name, address, numItemsInCart, orderTotal, createdAt } =
                 order.attributes;
-              console.log(createdAt);
+
               const date = day(createdAt).format('hh:mm a - MMM Do, YYYY ');
               return (
                 <tr key={id}>
