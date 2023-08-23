@@ -1,12 +1,13 @@
-const SelectInput = ({ label, name, list, defaultValue }) => {
+const FormSelect = ({ label, name, list, defaultValue, size }) => {
   return (
-    <div className='form-control w-full '>
-      <label className='label'>
+    <div className='form-control'>
+      <label htmlFor={name} className='label'>
         <span className='label-text capitalize'>{label}</span>
       </label>
       <select
-        className='select select-bordered select-xs'
         name={name}
+        id={name}
+        className={`select select-bordered ${size}`}
         defaultValue={defaultValue}
       >
         {list.map((item) => {
@@ -20,4 +21,4 @@ const SelectInput = ({ label, name, list, defaultValue }) => {
     </div>
   );
 };
-export default SelectInput;
+export default FormSelect;

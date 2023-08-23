@@ -1,61 +1,65 @@
 import { Form, useLoaderData, Link } from 'react-router-dom';
-import SearchInput from './SearchInput';
-import SelectInput from './SelectInput';
-
-import {
-  getUniqueCategories,
-  getUniqueCompanies,
-  getMaximumPrice,
-} from '../utils';
-import CheckboxInput from './CheckboxInput';
-import RangeInput from './RangeInput';
+import FormInput from './FormInput';
+import FormSelect from './FormSelect';
+import FormRange from './FormRange';
+import FormCheckbox from './FormCheckbox';
 const Filters = () => {
-  const { products, params } = useLoaderData();
+  const { meta, params } = useLoaderData();
   const { search, company, category, shipping, order, price } = params;
 
-  const categories = getUniqueCategories(products);
-  const companies = getUniqueCompanies(products);
-  const maxPrice = getMaximumPrice(products);
   return (
-    <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
+    <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
       {/* SEARCH */}
-      <SearchInput label='search product' name='search' defaultValue={search} />
-      {/* CATEGORY */}
-      <SelectInput
+      <FormInput
+        type='search'
+        label='search product'
+        name='search'
+        size='input-sm'
+        defaultValue={search}
+      />
+      {/* CATEGORIES */}
+      <FormSelect
         label='select category'
         name='category'
-        list={categories}
+        list={meta.categories}
+        size='select-sm'
         defaultValue={category}
       />
-      {/* COMPANY */}
-
-      <SelectInput
+      {/* COMPANIES */}
+      <FormSelect
         label='select company'
         name='company'
-        list={companies}
+        list={meta.companies}
+        size='select-sm'
         defaultValue={company}
       />
       {/* ORDER */}
-      <SelectInput
+      <FormSelect
         label='sort by'
         name='order'
-        defaultValue={order}
         list={['a-z', 'z-a', 'high', 'low']}
+        size='select-sm'
+        defaultValue={order}
+      />
+      {/* PRICE */}
+      <FormRange
+        name='price'
+        label='select price'
+        size='range-sm'
+        price={price}
       />
       {/* SHIPPING */}
-
-      <RangeInput label='select price' name='price' price={price} />
-
-      <CheckboxInput
-        label='free shipping'
+      <FormCheckbox
         name='shipping'
+        label='free shipping'
+        size='checkbox-sm'
         defaultValue={shipping}
       />
-
-      <button type='submit' className='btn btn-primary btn-xs '>
+      {/* BUTTONS */}
+      <button type='submit' className='btn btn-primary btn-sm'>
         search
       </button>
-      <Link to='/products' className='btn btn-accent btn-xs'>
+      <Link to='/products' className='btn btn-accent btn-sm'>
         reset
       </Link>
     </Form>

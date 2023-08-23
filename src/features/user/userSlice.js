@@ -6,14 +6,14 @@ const themes = {
   dracula: 'dracula',
 };
 
+const getUserFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('user')) || null;
+};
+
 const getThemeFromLocalStorage = () => {
   const theme = localStorage.getItem('theme') || themes.winter;
   document.documentElement.setAttribute('data-theme', theme);
   return theme;
-};
-
-const getUserFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('user')) || null;
 };
 
 const initialState = {
@@ -32,7 +32,6 @@ const userSlice = createSlice({
     },
     logoutUser: (state) => {
       state.user = null;
-      // localStorage.clear()
       localStorage.removeItem('user');
       toast.success('Logged out successfully');
     },
