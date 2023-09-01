@@ -15,6 +15,9 @@ const Navbar = () => {
 
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
+  const theme = useSelector((state) => state.userState.theme);
+  const isDarkTheme = theme === 'dracula';
+
   return (
     <nav className='bg-base-200'>
       <div className='navbar align-element'>
@@ -47,7 +50,11 @@ const Navbar = () => {
         <div className='navbar-end'>
           {/* THEME SETUP */}
           <label className='swap swap-rotate'>
-            <input type='checkbox' onChange={handleTheme} />
+            <input
+              type='checkbox'
+              onChange={handleTheme}
+              defaultChecked={isDarkTheme}
+            />
             {/* sun icon*/}
             <BsSunFill className='swap-on h-4 w-4' />
             {/* moon icon*/}
